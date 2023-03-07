@@ -1,48 +1,52 @@
 let jugadorX = [];
 let jugadorO = [];
-let combinacionGanadora = [
-    [3, 4, 5],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-];
+let combinacionGanadora = [[3, 4, 5], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+let tablero = document.getElementsByClassName("casilla");
+
+for (let i = 0; i < tablero.length; i++) {
+    tablero[i].setAttribute("onclick", `ponerFicha(${i})`);
+}
 
 let turno = true;
-let contador=0;
+let p;
 //Faltar saber el div q selecciona el jugador
-function ponerFicha() {
-    let tablero, p;
-        tablero = document.getElementsByClassName("casilla")[contador];
+function ponerFicha(numero) {
+    if (!turno) {
+        //Crear elemento p
         p = document.createElement("p");
-        if (!turno) {
-            p.textContent = "X";
-            turno = true;
-            tablero.removeAttribute("onclick");
-            jugadorX.push(tablero[contador]);
-            ganador();
-            contador++;
-            
-        } else {
-            p.textContent = "O";
-            turno = false;
-            tablero.removeAttribute("onclick");
-            jugadorO.push(tablero[ contador]);
-            ganador();
-            contador++;
-        }
-        tablero.appendChild(p);
-    
+        p.textContent = 'X';
+        jugadorX.push(tablero[numero]);
+        tablero[numero].appendChild(p);
+        ganador();
+    } else {
+        p = document.createElement("p");
+        p.textContent = 'O';
+        jugadorX.push(tablero[numero]);
+        tablero[numero].appendChild(p);
+        ganador();
+    }
+    turno = !turno;
+    tablero[numero].removeAttribute("onclick");
+
+    /**
+     * Añadir contador de tiempo para cambiar turno si se agota el tiempo
+     */
 
 
 }
-//Esto no está terminado solo es una guía
+/**
+ * Si hay ganador:
+ * No poner mas fichas
+ * Contador de puntuancion por equipo
+ * Reinicio tablero para volver a jugar
+ * Mostrar color linea ganadora
+ */
+
 function ganador() {
     for (let i = 0; i < combinacionGanadora.length; i++) {
-        if (jugadorX.includes(combinacionGanadora[i][0]) && jugadorX.includes(combinacionGanadora[i][1]) && jugadorX.includes(combinacionGanadora[i][2])) {
+        if (i<9) {
             alert("Ganan las X");
-        } else if (jugadorO.includes(combinacionGanadora[i][0]) && jugadorO.includes(combinacionGanadora[i][1]) && jugadorO.includes(combinacionGanadora[i][2])) {
+        } else if (i<5) {
             alert("Ganan las O");
         }
     }
