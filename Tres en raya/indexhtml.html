@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fila {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding-bottom: 5px;
+        }
+
+        .casilla {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        p{
+            margin:auto;
+            font-family: sans-serif;
+            font-size: 90px;
+        }
+        #parrafo{
+            margin-left: 210px;
+            font-family: sans-serif;
+            font-size: 34px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <p id="parrafo">TIC TAC TOE</p>
+    <div class="container" id="contenedor">
+        <div class="fila">
+            <div class="casilla" onclick="ponerFicha()"></div>
+            <div class="casilla" onclick="ponerFicha()"></div>
+            <div class="casilla" onclick="ponerFicha()"></div>
+        </div>
+        <div class="fila">
+            <div class="casilla"  onclick="ponerFicha()"></div>
+            <div class="casilla"  onclick="ponerFicha()"></div>
+            <div class="casilla"  onclick="ponerFicha()"></div>
+        </div>
+        <div class="fila">
+            <div class="casilla"  onclick="ponerFicha()"></div>
+            <div class="casilla"  onclick="ponerFicha()"></div>
+            <div class="casilla" onclick="ponerFicha()"></div>
+        </div>
+    </div>
+</body>
+
+<script src="tictactoee.js"></script>
+
+</html>
