@@ -11,7 +11,7 @@ let combinacionGanadora = [
 
 let turno = true;
 let contador=0;
-
+//Faltar saber el div q selecciona el jugador
 function ponerFicha() {
     let tablero, p;
         tablero = document.getElementsByClassName("casilla")[contador];
@@ -37,6 +37,7 @@ function ponerFicha() {
 
 
 }
+//Esto no está terminado solo es una guía
 function ganador() {
     for (let i = 0; i < combinacionGanadora.length; i++) {
         if (jugadorX.includes(combinacionGanadora[i][0]) && jugadorX.includes(combinacionGanadora[i][1]) && jugadorX.includes(combinacionGanadora[i][2])) {
