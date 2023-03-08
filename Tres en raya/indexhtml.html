@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .fila {
             display: flex;
             flex-wrap: wrap;
@@ -15,8 +21,8 @@
         }
 
         .casilla {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border: 1px solid black;
         }
         p{
@@ -25,16 +31,31 @@
             font-size: 90px;
         }
         #parrafo{
-            margin-left: 210px;
+            margin:auto;
             font-family: sans-serif;
             font-size: 34px;
         }
-        
+        .contenedorparrafo{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #boton:hover{
+            cursor: pointer;
+        }
+        #boton{
+            width: 60px;
+            height: 40px;
+        }
     </style>
 </head>
 
 <body>
-    <p id="parrafo">TIC TAC TOE</p>
+    <div class="contenedorparrafo">
+<p id="parrafo">TIC TAC TOE</p>
+    </div>
+    
     <div class="container" id="contenedor">
         <div class="fila">
             <div class="casilla"></div>
@@ -51,7 +72,9 @@
             <div class="casilla" ></div>
             <div class="casilla"></div>
         </div>
+        <input type="submit" value="Enviar" id="boton" onclick="resetear()">
     </div>
+
 </body>
 
 <script src="tictactoee.js"></script>
