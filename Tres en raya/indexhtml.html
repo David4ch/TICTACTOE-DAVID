@@ -6,118 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TICTOEDAVID</title>
-    <style>
-        body{
-            margin-top: 20px;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fila {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            padding-bottom: 5px;
-        }
-
-        .casilla {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 160px;
-            height: 160px;
-            border: 1px solid black;
-            box-shadow: 1px 1px;
-        }
-
-        p {
-            font-family: sans-serif;
-            font-size: 90px;
-        }
-
-        #parrafo {
-            margin: auto;
-            font-family: sans-serif;
-            font-size: 34px;
-        }
-
-        .contenedorarriba {
-            display: flex;
-            justify-content: center;
-            height: 50px;
-        }
-        .marcador{
-            font-size: 60px;
-        }
-        .contenedorcontadores{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 30px;
-        }
-        .contenedorparrafo {
-            display: flex;
-            justify-content: center;
-        }
-        .jugadordiv {
-            display: flex;
-            justify-content: center;
-            width: 20%;
-            margin-left: 680px;
-            margin-bottom: 10px;
-        }
-
-        .jugadortexto {
-            font-size: 10px;
-            width: 90px;
-        }
-
-        #boton:hover {
-            cursor: pointer;
-        }
-
-        #boton {
-            width: 60px;
-            height: 40px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div class="contenedorarriba">
-        <div class="contenedorparrafo">
-            <p id="parrafo">TIC TAC TOE</p>
-        </div>
-        <div class="contenedorcontadores">
-
-        </div>
+    <div class="arriba">
+        <p id="parrafo">TIC TAC TOE</p>
     </div>
-    <div class="jugadordiv">
-        <p class="jugadortexto">(Jugador X)</p>
-        <p class="jugadortexto">(Jugador O)</p>
-    </div>
+    <div class="containerenorme">
+        <div class="izquierda">
+            <div class="divmarcador">
+                <p id="marcadorletras">
+                    MARCADOR
+                </p>
+            </div>
+            <div class="contenedorcontadores">
 
-    <div class="container" id="contenedor">
-        <div class="fila">
-            <div class="casilla"></div>
-            <div class="casilla"></div>
-            <div class="casilla"></div>
+            </div>
+            <div class="jugadordiv">
+                <p class="jugadortexto">(Jugador X)</p>
+                <p class="jugadortexto">(Jugador O)</p>
+            </div>
         </div>
-        <div class="fila">
-            <div class="casilla"></div>
-            <div class="casilla"></div>
-            <div class="casilla"></div>
+        <div class="medio">
+            <div class="container" id="contenedor">
+                <div class="fila">
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+                <div class="fila">
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+                <div class="fila">
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                    <div class="casilla"></div>
+                </div>
+                <input type="submit" value="Enviar" id="boton" onclick="resetear()">
+            </div>
         </div>
-        <div class="fila">
-            <div class="casilla"></div>
-            <div class="casilla"></div>
-            <div class="casilla"></div>
+        <div class="derecha">
+            <div class="divmarcador">
+                <p id="marcadorletras">
+                    TIEMPO
+                </p>
+            </div>
         </div>
-        <input type="submit" value="Enviar" id="boton" onclick="resetear()">
     </div>
 
 </body>

@@ -33,7 +33,7 @@ let combinacionGanadora = [
 for (let i = 0; i < tablero.length; i++) {
     tablero[i].setAttribute("onclick", `ponerFicha(${i})`);
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 function ponerFicha(numero) {
 
     if (!turno) {
@@ -50,6 +50,7 @@ function ponerFicha(numero) {
     turno = !turno;
     tablero[numero].removeAttribute("onclick");
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 function GANAR_X() {
     let actual = [];
     for (let i = 0; i < tablero.length; i++) {
@@ -61,20 +62,20 @@ function GANAR_X() {
         if (actual.includes(combinacionGanadora[i][0]) && actual.includes(combinacionGanadora[i][1]) && actual.includes(combinacionGanadora[i][2])) {
             alert('GANAN LAS X');
             contador1++;
+            for (let k = 0; k < combinacionGanadora[i].length; k++) {
+                tablero[combinacionGanadora[i][k]].style.backgroundColor = 'red';
+            }
             for (let j = 0; j < tablero.length; j++) {
                 if (tablero[j].innerHTML == '') {
                     tablero[j].removeAttribute("onclick");
                 }
             }
-            for (let k = 0; k < actual.length; k++) {
-                actual[k].style.backgroundColor = 'red';
-            }
+            
             alert(`Dale al boton "Enviar" para comenzar una nueva partida`);
-            // actual[i].style.backgroundColor = 'lightgreen';
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 function GANAR_O() {
     let actual = [];
     for (let i = 0; i < tablero.length; i++) {
@@ -86,19 +87,19 @@ function GANAR_O() {
         if (actual.includes(combinacionGanadora[i][0]) && actual.includes(combinacionGanadora[i][1]) && actual.includes(combinacionGanadora[i][2])) {
             alert('GANAN LAS O');
             contador2++;
-            // actual[i].style.backgroundColor = 'red';
+            for (let k = 0; k < combinacionGanadora[i].length; k++) {
+                tablero[combinacionGanadora[i][k]].style.backgroundColor = 'lightgreen';
+            }
             for (let j = 0; j < tablero.length; j++) {
                 if (tablero[j].innerHTML == '') {
                     tablero[j].removeAttribute("onclick");
                 }
             }
-            for (let k = 0; k < actual.length; k++) {
-                actual[k].style.backgroundColor = 'lightgreen';
-            }
             alert(`Dale al boton "Enviar" para comenzar una nueva partida`);
         }
     }
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 function resetear() {
     texto.textContent = contador1;
     texto2.textContent = contador2;
@@ -118,10 +119,10 @@ function resetear() {
             tablero[i].style.backgroundColor = 'white';
         }
     }
-    for (let i = 0; i < tablero.length; i++) {
-        tablero[i].setAttribute("onclick", `ponerFicha(${i})`);
+    for (let j = 0; j < tablero.length; j++) {
+        tablero[j].setAttribute("onclick", `ponerFicha(${j})`);
     }
-    ponerFicha();
+    ponerFicha(numero);
 }
 /**
 * Añadir contador de tiempo para cambiar turno si se agota el tiempo
