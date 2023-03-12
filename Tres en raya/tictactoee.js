@@ -1,24 +1,37 @@
 /**Solo falta poner color a la linea ganadora */
 let tablero = document.getElementsByClassName("casilla");
+
+let body = document.getElementsByTagName("body")[0];
+body.addEventListener("load", updateClock());
+
 let contador1 = 0;
 let contador2 = 0;
+let contador3 = 0;
 
-let texto, texto2, vista, guion, p;
+var totalTime = 10;
+
 let turno = true;
+
+let texto, texto2, vista, guion, p, posicion, p2;
+posicion = document.getElementsByClassName("turnos")[0];
 vista = document.getElementsByClassName("contenedorcontadores")[0];
+p2 = document.createElement("p");
 
 texto = document.createElement("p");
 texto.textContent = contador1;
+texto.style.height = "90px"
 texto.setAttribute("class", "marcador");
 vista.appendChild(texto);
 
 guion = document.createElement("p");
 guion.textContent = "-";
+guion.style.height = "90px"
 guion.setAttribute("class", "marcador");
 vista.appendChild(guion);
 
 texto2 = document.createElement("p");
 texto2.textContent = contador2;
+texto2.style.height = "90px"
 texto2.setAttribute("class", "marcador");
 vista.appendChild(texto2);
 
@@ -33,6 +46,32 @@ let combinacionGanadora = [
 for (let i = 0; i < tablero.length; i++) {
     tablero[i].setAttribute("onclick", `ponerFicha(${i})`);
 }
+function updateClock() {
+    document.getElementById('countdown').innerHTML = totalTime
+
+    if (totalTime == 0) {
+        alert('Has tardado mucho tiempo, cambio de turno');
+        turno = !turno;
+        if (p2.textContent == "Turno O") {
+            p2.textContent = "Turno X";
+            p2.style.color = "red";
+            p2.style.fontSize = "20px";
+            p2.style.fontfamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
+
+        } else {
+            p2.textContent = "Turno 0";
+            p2.style.color = "green";
+            p2.style.fontSize = "20px";
+            p2.style.fontfamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
+
+        }
+        totalTime = 10;
+        setTimeout("updateClock()", 1000);
+    } else {
+        totalTime -= 1;
+        setTimeout("updateClock()", 1000);
+    }
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function ponerFicha(numero) {
 
@@ -41,14 +80,33 @@ function ponerFicha(numero) {
         p.textContent = 'X';
         tablero[numero].appendChild(p);
         GANAR_X();
+        totalTime = 10;
+        p2.textContent = "Turno 0";
+        p2.style.color = "green";
+        p2.style.fontSize = "20px";
+        p2.style.fontfamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
+        posicion.appendChild(p2);
+        contador3++;
     } else {
         p = document.createElement("p");
         p.textContent = 'O';
         tablero[numero].appendChild(p);
-        GANAR_O()
+        GANAR_O();
+        totalTime = 10;
+        p2.textContent = "Turno X";
+        p2.style.color = "red";
+        p2.style.fontSize = "20px";
+        p2.style.fontfamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
+        posicion.appendChild(p2);
+        contador3++;
     }
     turno = !turno;
     tablero[numero].removeAttribute("onclick");
+    if (contador3 == 9) {
+        alert(`¡Empate! Dale al botón "Nueva partida" para volver a jugar!`);
+        document.getElementById('countdown').style.color = "rgb(225, 214, 214)";
+        totalTime = -1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function GANAR_X() {
@@ -70,8 +128,9 @@ function GANAR_X() {
                     tablero[j].removeAttribute("onclick");
                 }
             }
-            
-            alert(`Dale al boton "Enviar" para comenzar una nueva partida`);
+            document.getElementById('countdown').style.color = "rgb(225, 214, 214)";
+            totalTime = -1;
+            alert(`Dale al boton "Nueva Partida" para comenzar una nueva partida`);
         }
     }
 }
@@ -95,12 +154,16 @@ function GANAR_O() {
                     tablero[j].removeAttribute("onclick");
                 }
             }
-            alert(`Dale al boton "Enviar" para comenzar una nueva partida`);
+            document.getElementById('countdown').style.color = "rgb(225, 214, 214)";
+            totalTime = -1;
+            alert(`Dale al boton "Nueva Partida" para comenzar una nueva partida`);
         }
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function resetear() {
+    document.getElementById('countdown').style.color = "black";
+    totalTime = 10;
     texto.textContent = contador1;
     texto2.textContent = contador2;
     if (contador1 > contador2) {
@@ -115,26 +178,21 @@ function resetear() {
     }
     for (let i = 0; i < tablero.length; i++) {
         if (tablero[i].innerHTML == '<p>X</p>' || tablero[i].innerHTML == '<p>O</p>') {
-            tablero[i].innerHTML = null;
+            tablero[i].innerHTML = "";
             tablero[i].style.backgroundColor = 'white';
         }
     }
     for (let j = 0; j < tablero.length; j++) {
         tablero[j].setAttribute("onclick", `ponerFicha(${j})`);
+
     }
-    ponerFicha(numero);
 }
 /**
 * Añadir contador de tiempo para cambiar turno si se agota el tiempo
- */
-/**
  * Si hay ganador:
  * No poner mas fichas
  * Contador de puntuancion por equipo
  * Reinicio tablero para volver a jugar
  * Mostrar color linea ganadora
  */
-
-
-
 

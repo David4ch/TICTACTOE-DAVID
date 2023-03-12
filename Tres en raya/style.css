@@ -1,7 +1,10 @@
+* {
+    margin: 0;
+}
+
 body {
     margin-top: 20px;
-    background-image: url("https://www.elconfidencialdigital.com/media/elconfidencialdigital/images/2022/08/22/2022082212382871591.jpg");
-    background-repeat: no-repeat;
+    background-image: url("https://i.pinimg.com/originals/17/04/16/170416e33a6d0e10f91461aab75b9b0f.png");
     background-size: cover;
 }
 
@@ -15,8 +18,8 @@ body {
 .fila {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    padding-bottom: 5px;
+    gap: 8px;
+    padding-bottom: 8px;
 }
 
 .casilla {
@@ -25,13 +28,13 @@ body {
     align-items: center;
     width: 160px;
     height: 160px;
-    border: 1px solid black;
-    box-shadow: 1px 1px;
+    border: 1px solid white;
+    box-shadow: 4px 4px black;
     background-color: white;
 }
 
 .casilla:hover {
-    box-shadow: 5px 5px rgb(51, 77, 113);
+    box-shadow: 5px 5px rgb(255, 200, 0);
 }
 
 p {
@@ -41,55 +44,69 @@ p {
 
 #boton:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 #boton {
-    width: 60px;
-    height: 40px;
-}
-
-.contenedorarriba {
-    width: 100%;
+    width: 150px;
     height: 60px;
-    display: flex;
-    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+
 }
 
 #parrafo {
-    font-size: 40px;
+    font-size: 50px;
+    height: 20px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .containerenorme {
     display: flex;
 }
 
+.turnos {
+    position: absolute;
+    height: 25%;
+    width: 25%;
+}
+
 .arriba {
+    position: relative;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 60px;
-    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 80px;
 }
 
 .izquierda {
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.divmarcador{
+
+.divmarcador {
     display: flex;
     justify-content: center;
 }
+
 .marcador {
     font-size: 80px;
-    padding: 0%;
 }
-#marcadorletras{
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
+
+#marcadorletras {
+    font-size: 50px;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-left: 8px solid gray;
+    background-color: rgb(225, 214, 214);
+    padding: 12px;
+    margin-bottom: 20px;
 }
+
 .jugadortexto {
     font-size: 10px;
 }
@@ -97,16 +114,50 @@ p {
 .jugadordiv {
     display: flex;
     justify-content: center;
+    border-left: 6px gray solid;
+    border-right: 6px gray solid;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(225, 214, 214);
 }
 
 .contenedorcontadores {
     display: flex;
+    border-left: 6px gray solid;
+    border-right: 6px gray solid;
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(225, 214, 214);
 }
 
 .medio {
-    width: 50%;
+    width: 40%;
 }
 
 .derecha {
-    width: 25%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px gray solid;
+    background-color: rgb(225, 214, 214);
+}
+
+#segundos {
+    margin-top: 40px;
+    font-size: 60px;
+}
+
+#countdown {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
